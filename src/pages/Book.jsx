@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Video, Globe } from 'lucide-react';
+import { Clock, Video, Globe, ChevronLeft } from 'lucide-react';
 
 const Book = () => {
   useEffect(() => {
@@ -24,15 +24,22 @@ const Book = () => {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col h-full">
-          {/* Logo */}
-          <Link to="/" className="inline-flex items-center gap-2.5 mb-16 md:mb-auto hover:opacity-90 transition-opacity w-max">
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#3b6fe8] to-[#7c3bed] flex items-center justify-center shrink-0">
-              <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] fill-white"><path d="M12 2L4 6v6c0 5.5 3.5 10.7 8 12 4.5-1.3 8-6.5 8-12V6l-8-4z"/></svg>
-            </div>
-            <div className="text-[17px] font-extrabold tracking-[-0.3px] text-white">
-              Persona<span className="text-[#5b8af5]">Force®</span>
-            </div>
-          </Link>
+          <div className="flex flex-col gap-5 mb-16 md:mb-auto">
+            {/* Back Button */}
+            <Link to="/" className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#7a7fa8] hover:text-white transition-colors w-max">
+              <ChevronLeft className="w-4 h-4" /> Back to Home
+            </Link>
+
+            {/* Logo */}
+            <Link to="/" className="inline-flex items-center gap-2.5 hover:opacity-90 transition-opacity w-max">
+              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#3b6fe8] to-[#7c3bed] flex items-center justify-center shrink-0">
+                <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] fill-white"><path d="M12 2L4 6v6c0 5.5 3.5 10.7 8 12 4.5-1.3 8-6.5 8-12V6l-8-4z"/></svg>
+              </div>
+              <div className="text-[17px] font-extrabold tracking-[-0.3px] text-white">
+                Persona<span className="text-[#5b8af5]">Force®</span>
+              </div>
+            </Link>
+          </div>
 
           <div className="mt-auto pt-16 md:pt-32 pb-8 animate-[fadeUp_0.7s_ease_both]">
             <div className="inline-flex items-center gap-2 bg-[#3b6fe8]/[0.15] border border-[#3b6fe8]/30 text-[#5b8af5] text-[11px] font-bold tracking-[0.12em] uppercase py-1.5 px-3.5 rounded-full mb-6">
@@ -45,13 +52,13 @@ const Book = () => {
             </h1>
 
             <p className="text-[15px] text-[#eef0ff]/60 leading-[1.75] max-w-[400px] mb-9">
-              In 30 minutes, we'll map the identity architecture beneath your performance — the drivers, the shadow patterns, the exact points where pressure causes collapse — and show you a clear path to stabilise it.
+              In 30 minutes, we'll map the identity architecture beneath your performance, the drivers, the shadow patterns, the exact points where pressure causes collapse, and show you a clear path to stabilise it.
             </p>
 
             <div className="flex flex-col gap-3.5">
               {[
                 { bold: "30 minutes.", text: "No pitch. No pressure. Pure intelligence." },
-                { bold: "With Travis Fox or Michelle Fox", text: "directly — not a sales rep." },
+                { bold: "With Travis Fox or Michelle Fox", text: "directly, not a sales rep." },
                 { bold: "Limited to 6 sessions per month.", text: "Spots fill fast." },
                 { bold: "", text: "You'll leave knowing something about your identity architecture you've never seen before." }
               ].map((item, i) => (
@@ -109,7 +116,7 @@ const Book = () => {
 
       {/* FOOTER - MOBILE ONLY */}
       <footer className="col-span-1 md:col-span-2 bg-[#06081a] border-t border-white/[0.07] py-4 px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-4 text-[12px] text-white/30 font-medium">
-        <span>© 2026 PersonaForce® — All Rights Reserved</span>
+        <span>© 2026 PersonaForce® | All Rights Reserved</span>
         <div className="flex gap-6">
           <a href="#" className="hover:text-white/60 transition-colors">Privacy</a>
           <a href="#" className="hover:text-white/60 transition-colors">Terms</a>
