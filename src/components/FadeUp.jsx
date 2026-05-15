@@ -1,0 +1,45 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+const FadeUp = ({ children, delay = 0, className = "", threshold = 0.15 }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const domRef = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    const currentRef = domRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [threshold]);
+
+  return (
+    <div
+      ref={domRef}
+      className={`transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      } ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
+
+export default FadeUp;

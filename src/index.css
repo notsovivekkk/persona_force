@@ -4,7 +4,23 @@
   --animate-fadeUp: fadeUp 0.7s ease both;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+wistia-player[media-id='e4ij9uaujk']:not(:defined) { 
+  background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/e4ij9uaujk/swatch'); 
+  display: block; 
+  filter: blur(5px); 
+  padding-top: 56.25%; 
+}
+
+wistia-player {
+  display: block;
+  width: 100%;
 }
