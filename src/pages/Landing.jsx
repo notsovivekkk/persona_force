@@ -3,14 +3,11 @@ import { Link } from 'react-router-dom';
 import { 
   Play,
   ChevronLeft,
-  ChevronRight,
-  Menu,
-  X
+  ChevronRight
 } from 'lucide-react';
 
 const Landing = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const testimonials = [
@@ -34,15 +31,6 @@ const Landing = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent scrolling when mobile menu is open
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [isMenuOpen]);
-
   return (
     <div className="min-h-screen bg-[#06081a] text-[#eef0ff] font-sans overflow-x-hidden selection:bg-[#3b6fe8]/30 selection:text-white">
       
@@ -53,41 +41,19 @@ const Landing = () => {
       </div>
 
       {/* NAV */}
-      <nav className={`fixed top-[40px] md:top-[44px] w-full z-40 transition-all duration-300 flex justify-center border-b border-white/[0.06] ${isScrolled ? 'bg-[#06081a]/95 backdrop-blur-md py-4' : 'bg-[#06081a] py-4 md:py-5'}`}>
+      <nav className={`fixed top-[40px] md:top-[44px] w-full z-40 transition-all duration-300 flex justify-center border-b border-white/[0.06] ${isScrolled ? 'bg-[#06081a]/95 backdrop-blur-md py-3 md:py-4' : 'bg-[#06081a] py-4 md:py-5'}`}>
         <div className="w-full max-w-[1000px] px-5 md:px-8 flex justify-between items-center">
           
           <div className="flex items-center gap-2.5 z-50">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3b6fe8] to-[#7c3bed] flex items-center justify-center shrink-0">
-              <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] fill-white"><path d="M12 2L4 6v6c0 5.5 3.5 10.7 8 12 4.5-1.3 8-6.5 8-12V6l-8-4z"/></svg>
+            <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-gradient-to-br from-[#3b6fe8] to-[#7c3bed] flex items-center justify-center shrink-0">
+              <svg viewBox="0 0 24 24" className="w-[14px] h-[14px] md:w-[18px] md:h-[18px] fill-white"><path d="M12 2L4 6v6c0 5.5 3.5 10.7 8 12 4.5-1.3 8-6.5 8-12V6l-8-4z"/></svg>
             </div>
-            <div className="text-base font-extrabold tracking-[-0.3px] text-[#eef0ff]">
+            <div className="text-[15px] md:text-base font-extrabold tracking-[-0.3px] text-[#eef0ff]">
               Persona<span className="text-[#5b8af5]">Force®</span>
             </div>
           </div>
 
-          <div className="hidden md:flex gap-8 items-center">
-            <a href="#" className="text-[13px] text-[#7a7fa8] hover:text-white transition-colors">AI Manager</a>
-            <a href="#" className="text-[13px] text-[#7a7fa8] hover:text-white transition-colors">Lawyers</a>
-            <a href="#" className="text-[13px] text-[#7a7fa8] hover:text-white transition-colors">Sales Identity</a>
-            <a href="#" className="text-[13px] text-[#7a7fa8] hover:text-white transition-colors">Athletes</a>
-          </div>
-
-          <Link to="/book" className="hidden md:block bg-[#3b6fe8] hover:bg-[#3b6fe8]/90 text-white px-5 py-2.5 rounded-lg text-[13px] font-semibold transition-colors">
-            Book a Call
-          </Link>
-
-          <button className="md:hidden text-[#7a7fa8] hover:text-white transition-colors z-50" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
-          </button>
-        </div>
-
-        {/* Mobile Menu Dropdown */}
-        <div className={`fixed inset-0 bg-[#06081a]/95 backdrop-blur-xl z-40 transition-transform duration-300 md:hidden flex flex-col items-center justify-center gap-8 ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-          <a href="#" className="text-xl font-bold text-[#eef0ff] hover:text-[#5b8af5] transition-colors" onClick={() => setIsMenuOpen(false)}>AI Manager</a>
-          <a href="#" className="text-xl font-bold text-[#eef0ff] hover:text-[#5b8af5] transition-colors" onClick={() => setIsMenuOpen(false)}>Lawyers</a>
-          <a href="#" className="text-xl font-bold text-[#eef0ff] hover:text-[#5b8af5] transition-colors" onClick={() => setIsMenuOpen(false)}>Sales Identity</a>
-          <a href="#" className="text-xl font-bold text-[#eef0ff] hover:text-[#5b8af5] transition-colors" onClick={() => setIsMenuOpen(false)}>Athletes</a>
-          <Link to="/book" className="bg-[#3b6fe8] text-center text-white px-8 py-4 rounded-xl text-lg font-bold w-[80%] max-w-[300px] mt-4" onClick={() => setIsMenuOpen(false)}>
+          <Link to="/book" className="bg-[#3b6fe8] hover:bg-[#3b6fe8]/90 text-white px-4 md:px-5 py-2 md:py-2.5 rounded-lg text-[12px] md:text-[13px] font-semibold transition-colors">
             Book a Call
           </Link>
         </div>
