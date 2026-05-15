@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const FadeUp = ({ children, delay = 0, className = "", threshold = 0.15 }) => {
   const [isVisible, setIsVisible] = useState(false);
